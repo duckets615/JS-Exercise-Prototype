@@ -64,7 +64,8 @@ function Person(attrPerson) {
       - All instances built with Car:
           + should initialize with an `tank` at 0
           + should initialize with an `odometer` at 0
-      - Give cars the ability to get fueled with a `.fill(gallons)` method. Add the gallons to `tank`.
+      - Give cars the ability to get fueled with a `.fill(gallons)` method. Add the gallons 
+        to `tank`.
       - STRETCH: Give cars ability to `.drive(distance)`. The distance driven:
           + Should cause the `odometer` to go up.
           + Should cause the the `tank` to go down taking `milesPerGallon` into account.
@@ -72,10 +73,18 @@ function Person(attrPerson) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
-    
+ function Car(carAttr) {
+    this.model = carAttr.model;
+    this.milesPerGallon = carAttr.milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
   }
-  
+
+  Car.prototype.fill = function(gallons) {this.tank += gallons};
+  Car.prototype.drive = function(distance) {
+    this.odometer += distance
+
+  }
   
   /*
     TASK 3

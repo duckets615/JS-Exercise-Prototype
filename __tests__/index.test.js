@@ -52,7 +52,7 @@ describe('Instances of Person', () => {
   describe('Instances of Car', () => {
     let batmobile
     beforeEach(() => {
-      batmobile = new functions.Car('BatMobile', 20)
+      batmobile = new functions.Car({model:'BatMobile',milesPerGallon: 20})
     })
     it('initialize with the given model', () => {
       expect(batmobile.model).toBe('BatMobile')
