@@ -10,7 +10,7 @@ describe('Instances of Person', () => {
     let neo
     const foods = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     beforeEach(() => {
-      neo = new functions.Person('Neo', 20)
+      neo = new functions.Person({name:'Neo', age: 20})
     })
     it('initialize with the given name', () => {
       expect(neo.name).toBe('Neo')

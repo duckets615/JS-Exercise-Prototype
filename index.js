@@ -45,16 +45,19 @@ function Person(attrPerson) {
   this.stomach = [];
 }
 
- Person.prototype.eat = function (food) {return this.stomach.length < 10 ? this.stomach.push(food) : ''};
- Person.prototype.poop = function() {this.stomach === []}; 
-  
- 
- 
+  Person.prototype.eat = function (food) {
+    return this.stomach.length < 10 ? this.stomach.push(food) : `Too full, can't eat anymore`
+  };
 
+ Person.prototype.poop = function() {
+    return this.stomach = []
+  };
   
-  
-  
-  
+  Person.prototype.toSpeak = function() {
+    return `${this.name}, ${this.age}`
+  };
+
+
   /*
     TASK 2
       - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
