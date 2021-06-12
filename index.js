@@ -73,18 +73,25 @@ function Person(attrPerson) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car(carAttr) {
-    this.model = carAttr.model;
-    this.milesPerGallon = carAttr.milesPerGallon;
-    this.tank = 0;
-    this.odometer = 0;
-  }
+function Car(carAttr) {
+  this.model = carAttr.model;
+  this.milesPerGallon = carAttr.milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
 
-  Car.prototype.fill = function(gallons) {this.tank += gallons};
-  Car.prototype.drive = function(distance) {
-    this.odometer += distance
-
+Car.prototype.fill = function(gallons) {this.tank += gallons};
+Car.prototype.drive = function(distance) {
+  this.odometer += distance;
+  let expended = distance / this.milesPerGallon;
+  let maxDist = this.tank * this.milesPerGallon
+  if (expended > this.tank) {
+    return `I ran out of fuel at ${maxDist} miles!`
+  } else {
+    this.tank -= expended
+    return `${this.tank} gallons remaining which will get us another ${maxDist} miles`
   }
+}
   
   /*
     TASK 3
@@ -93,9 +100,16 @@ function Person(attrPerson) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
-  }
+function Baby(babyAttr) {
+  Person.call(this, babyAttr)
+  this.favoriteToy = babyAttr.favoriteToy;
+}
+
+Baby.prototype = Object.create(Person.prototype)
+
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`
+}
  
   
   /* 

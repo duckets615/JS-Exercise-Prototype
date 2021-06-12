@@ -80,7 +80,7 @@ describe('Instances of Person', () => {
   describe('Instances of Baby', () => {
     let baby
     beforeEach(() => {
-      baby = new functions.Baby('Lucy', 5, 'trains')
+      baby = new functions.Baby({name:'Lucy',age:5,favoriteToy:'trains'})
     })
     it('initialize with the given name', () => {
       expect(baby.name).toBe('Lucy')
